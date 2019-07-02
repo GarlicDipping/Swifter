@@ -20,7 +20,7 @@ extension Notification.Name {
 }
 
 public extension Swifter {
-    
+    static let safariDelegate = TwitterLoginSafariDelegate()
     class TwitterLoginSafariDelegate: NSObject, SFSafariViewControllerDelegate
     {
         @available(iOS 9.0, *)
@@ -71,9 +71,8 @@ public extension Swifter {
             let forceLogin = forceLogin ? "&force_login=true" : ""
             let query = "oauth/authorize?oauth_token=\(token!.key)\(forceLogin)"
             let queryUrl = URL(string: query, relativeTo: TwitterURL.oauth.url)!
-            let safariDelegate = TwitterLoginSafariDelegate()
             let safariView = SFSafariViewController(url: queryUrl)
-            safariView.delegate = safariDelegate
+            safariView.delegate = Swifter.safariDelegate
             safariView.modalTransitionStyle = .coverVertical
             safariView.modalPresentationStyle = .overFullScreen
             presenting?.present(safariView, animated: true, completion: nil)
