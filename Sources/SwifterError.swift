@@ -19,7 +19,8 @@ public struct SwifterError: LocalizedError {
         case jsonParseError
         case invalidGifData
         case invalidGifResponse
-        
+        case AuthCancelled
+
         public var description: String {
             switch self {
             case .invalidAppOnlyBearerToken:
@@ -38,6 +39,8 @@ public struct SwifterError: LocalizedError {
                 return "invalidGifData"
             case .invalidGifResponse:
                 return "invalidGifResponse"
+            case .AuthCancelled:
+                return "AuthCancelled"
             }
         }
         

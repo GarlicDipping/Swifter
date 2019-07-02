@@ -107,6 +107,7 @@ public class Swifter {
     public var client: SwifterClientProtocol
     private var chunkBuffer: String?
     
+    internal var authCancelObserver: NSObjectProtocol?
     internal var swifterCallbackToken: NSObjectProtocol? {
         willSet {
             guard let token = swifterCallbackToken else { return }
