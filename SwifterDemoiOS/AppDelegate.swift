@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         let urlScheme = URL(string: "Swifter://")
-        Swifter.handleOpenURL(url, callbackURL: urlScheme)
+        Swifter.handleOpenURL(url, callbackURL: urlScheme!)
         return true
     }
     
