@@ -121,13 +121,9 @@ public extension Swifter {
     }
     #endif
     
-    public class func handleOpenURL(_ url: URL, callbackURL: URL) -> Bool {
-        guard url.hasSameUrlScheme(as: callbackURL) else {
-            return false
-        }
+    public class func handleOpenURL(_ url: URL) {
         let notification = Notification(name: .swifterCallback, object: nil, userInfo: [CallbackNotification.optionsURLKey: url])
         NotificationCenter.default.post(notification)
-        return true
     }
     
     func authorizeAppOnly(success: TokenSuccessHandler?, failure: FailureHandler?) {
