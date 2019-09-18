@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public typealias LoginSuccessCallback = (NSString, NSString, NSString) -> Swift.Void
+public typealias LoginSuccessCallback = (NSString, NSString, NSString, NSString) -> Swift.Void
 public typealias LoginFailCallback = (NSString) -> Swift.Void
 
 @objc public class SwifterLoginWrapper : NSObject {
@@ -57,7 +57,12 @@ public typealias LoginFailCallback = (NSString) -> Swift.Void
                     let userId = accessToken!.userID!
                     NSUserId = userId as NSString
                 }
-                callback_success!(NSAccessToken, NSAccessTokenSecret, NSUserId)
+                var NSUserName = "" as NSString
+                if accessToken!.screenName != nil {
+                    let userName = accessToken!.screenName!
+                    NSUserName = userName as NSString
+                }
+                callback_success!(NSAccessToken, NSAccessTokenSecret, NSUserId, NSUserName)
             }, failure: failureHandler)
         }
     }
